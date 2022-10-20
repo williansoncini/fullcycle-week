@@ -81,3 +81,6 @@ func (r *Route) ExportJsonPositions() ([]string, error) {
 	return result, nil
 }
 
+func NewRoute() *Route {
+	return &Route{}
+}
