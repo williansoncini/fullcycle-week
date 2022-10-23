@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	// route2 "github.com/williansoncini/fullcycle-week/simulator//application/route"
+	// route2 "github.com/williansoncini/fullcycle-week/simulator/application/route"
 	// ckafka2 "github.com/williansoncini/fullcycle-week/simulator/application/kafka"
 	kafka2 "github.com/williansoncini/fullcycle-week/application/kafka"
 	"github.com/williansoncini/fullcycle-week/infra/kafka"

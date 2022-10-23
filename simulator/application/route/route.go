@@ -10,49 +10,49 @@ import (
 )
 
 type Route struct {
-	ID string `json:"routeID"`
-	ClientID string `json:"clientId"`
+	ID        string     `json:"routeId"`
+	ClientID  string     `json:"clientId"`
 	Positions []Position `json:"position"`
 }
 
 type Position struct {
-	Lat float64 `json:"lat"`
+	Lat  float64 `json:"lat"`
 	Long float64 `json:"long"`
 }
 
 type PartialRoutePosition struct {
-	ID string `json:"routeID"`
-	ClientID string `json:"clientID"`
+	ID       string    `json:"routeId"`
+	ClientID string    `json:"clientId"`
 	Position []float64 `json:"position"`
-	Finished bool `json:"finished"`
+	Finished bool      `json:"finished"`
 }
 
-func(r *Route) LoadPositions() error {
-	if r.ID == "" {
-		return errors.New("rout id not informed")
-	}
+func NewRoute() *Route {
+	return &Route{}
+}
 
+func (r *Route) LoadPositions() error {
+	if r.ID == "" {
+		return errors.New("route id not informed")
+	}
 	f, err := os.Open("destinations/" + r.ID + ".txt")
 	if err != nil {
-		// println("destinations/" + r.ID + ".txt")
-		
 		return err
 	}
 	defer f.Close()
 	scanner := bufio.NewScanner(f)
 	for scanner.Scan() {
-		data := strings.Split(scanner.Text(),",")
-		lat, err := strconv.ParseFloat(data[0], 64)
+		data := strings.Split(scanner.Text(), ",")
+		lat, err := strconv.ParseFloat(data[1], 64)
 		if err != nil {
 			return nil
 		}
-		long, err := strconv.ParseFloat(data[1], 64)
+		long, err := strconv.ParseFloat(data[0], 64)
 		if err != nil {
 			return nil
 		}
-
 		r.Positions = append(r.Positions, Position{
-			Lat: lat,
+			Lat:  lat,
 			Long: long,
 		})
 	}
@@ -63,7 +63,6 @@ func (r *Route) ExportJsonPositions() ([]string, error) {
 	var route PartialRoutePosition
 	var result []string
 	total := len(r.Positions)
-
 	for k, v := range r.Positions {
 		route.ID = r.ID
 		route.ClientID = r.ClientID
@@ -79,8 +78,4 @@ func (r *Route) ExportJsonPositions() ([]string, error) {
 		result = append(result, string(jsonRoute))
 	}
 	return result, nil
-}
-
-func NewRoute() *Route {
-	return &Route{}
 }
