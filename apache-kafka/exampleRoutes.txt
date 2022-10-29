@@ -1,0 +1,16 @@
+{"clietId":"a", "routeId":"1"}
+{"clietId":"b", "routeId":"2"}
+{"clietId":"c", "routeId":"3"}
+
+{"clietId":"c", "routeId":"1"}
+{"clietId":"b", "routeId":"2"}
+{"clietId":"a", "routeId":"3"}
+
+{"clietId":"b", "routeId":"1"}
+{"clietId":"c", "routeId":"2"}
+{"clietId":"a", "routeId":"3"}
+
+
+{"clietId":"a", "routeId":"1"}
+{"clietId":"c", "routeId":"2"}
+{"clietId":"b", "routeId":"3"}
