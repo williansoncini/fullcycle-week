@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-conf
+data:
+  env: |
+    MONGO_DSN=mongodb://root:root@mongodb/nest?authSource=admin
+    KAFKA_CLIENT_ID=code-delivery
+    KAFKA_BROKER=[server]:9092
+    KAFKA_CONSUMER_GROUP_ID=code-delivery
+    KAFKA_SASL_USERNAME=[token_user]
+    KAFKA_SASL_PASSWORD=[toke_pass]

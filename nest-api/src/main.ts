@@ -11,6 +11,7 @@ async function bootstrap() {
       client: {
         clientId: process.env.KAFKA_CLIENT_ID,
         brokers: [process.env.KAFKA_BROKER],
+        // Production
         // ssl: true,
         // sasl: {
         //   mechanism: 'plain', // scram-sha-256 or scram-sha-512

@@ -21,6 +21,7 @@ func (k *KafkaConsumer) Consume() {
 	configMap := &ckafka.ConfigMap{
 		"bootstrap.servers": os.Getenv("KafkaBootstrapServers"),
 		"group.id":          os.Getenv("KafkaConsumerGroupId"),
+		// // production
 		// "security.protocol": os.Getenv("security.protocol"),
 		// "sasl.mechanisms":   os.Getenv("sasl.mechanisms"),
 		// "sasl.username":     os.Getenv("sasl.username"),
